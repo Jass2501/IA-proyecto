@@ -75,3 +75,132 @@ form.addEventListener('submit', function (e) {
         respuestaDiv.style.display = 'block';
     }
 });
+
+// ====== PORTFOLIO ANIMATIONS ======
+const AnimationController = {
+    scrollTimeout: null,
+    scrollListener: null,
+
+    initPortfolioAnimations() {
+        const cardSelectors = [
+            '.portfolio-card',
+            '.team-card',
+            '.testimonial-card'
+        ];
+
+        const allCards = document.querySelectorAll(cardSelectors.join(', '));
+
+        if (!allCards.length) return;
+
+        let staggerIndex = 0;
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    staggerIndex++;
+                    setTimeout(() => {
+                        entry.target.classList.add('is-visible');
+                    }, (staggerIndex - 1) * 100);
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        allCards.forEach(card => {
+            observer.observe(card);
+        });
+
+        window.cardObserver = observer;
+    },
+
+    attachCardListeners() {
+        const cardSelectors = [
+            '.portfolio-card',
+            '.team-card',
+            '.testimonial-card'
+        ];
+
+        const allCards = document.querySelectorAll(cardSelectors.join(', '));
+
+        allCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('is-hovered');
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('is-hovered');
+            });
+
+            card.addEventListener('focus', (e) => {
+                if (e.target === card || card.contains(e.target)) {
+                    card.classList.add('is-focused');
+                }
+            }, true);
+
+            card.addEventListener('blur', (e) => {
+                if (e.target === card || card.contains(e.target)) {
+                    card.classList.remove('is-focused');
+                }
+            }, true);
+        });
+    },
+
+    debounceScroll(callback, delay = 16) {
+        return function() {
+            clearTimeout(this.scrollTimeout);
+            this.scrollTimeout = setTimeout(() => {
+                callback.call(this);
+            }, delay);
+        };
+    },
+
+    smoothScroll() {
+        let ticking = false;
+
+        const onScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    const elements = document.querySelectorAll('[data-parallax]');
+
+                    elements.forEach(el => {
+                        const speed = el.dataset.parallax || 0.5;
+                        el.style.transform = `translateY(${scrollY * speed}px)`;
+                    });
+
+                    ticking = false;
+                });
+
+                ticking = true;
+            }
+        };
+
+        this.scrollListener = this.debounceScroll(onScroll, 16).bind(this);
+        window.addEventListener('scroll', this.scrollListener, false);
+    },
+
+    init() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                this.initPortfolioAnimations();
+                this.attachCardListeners();
+                this.smoothScroll();
+            });
+        } else {
+            this.initPortfolioAnimations();
+            this.attachCardListeners();
+            this.smoothScroll();
+        }
+    }
+};
+
+// Initialize animations
+AnimationController.init();
