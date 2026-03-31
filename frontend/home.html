@@ -4,22 +4,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Nuestros Servicios</title>
+    <title>Inicio - Estudio Creativo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav aria-label="Navegación principal">
-        <ul>
-            <li><a href="home.html">Inicio</a></li>
-            <li><a href="contact.html">Contacto</a></li>
-        </ul>
-    </nav>
+    <header>
+        <nav aria-label="Navegación principal">
+            <div class="nav-container">
+                <h2 class="logo">Estudio Creativo</h2>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#team">Equipo</a></li>
+                    <li><a href="#testimonials">Testimonios</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <section class="servicios" aria-label="Nuestros servicios">
-        <h1>Nuestros Servicios</h1>
-        <ul class="servicios-lista" id="servicios-container"></ul>
-    </section>
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Estudio Creativo / Agencia Digital</h1>
+                <p>Transformamos ideas en experiencias digitales impactantes. Especialistas en branding, diseño gráfico y desarrollo web.</p>
+                <a href="#contact" class="cta-button">Comienza tu proyecto</a>
+            </div>
+        </section>
+
+        <section id="about" class="about" aria-label="Sobre nosotros">
+            <div class="container">
+                <h2>Sobre Nosotros</h2>
+                <p>Somos un equipo apasionado de creativos y desarrolladores dedicados a ayudar a marcas a destacar en el mundo digital. Con años de experiencia, combinamos estrategia, diseño y tecnología para crear soluciones que conectan con tu audiencia.</p>
+            </div>
+        </section>
+
+        <section id="servicios" class="servicios" aria-label="Nuestros servicios">
+            <div class="container">
+                <h2>Nuestros Servicios</h2>
+                <div class="servicios-lista" id="servicios-container"></div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio" aria-label="Portfolio">
+            <div class="container">
+                <h2>Portfolio</h2>
+                <div class="portfolio-grid">
+                    <article class="portfolio-card">
+                        <h3>Proyecto 1</h3>
+                        <p>Landing page responsive para marca de moda.</p>
+                    </article>
+                    <article class="portfolio-card">
+                        <h3>Proyecto 2</h3>
+                        <p>Identidad visual completa y manual de marca.</p>
+                    </article>
+                    <article class="portfolio-card">
+                        <h3>Proyecto 3</h3>
+                        <p>Plataforma web de e-commerce con UX optimizada.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="team" aria-label="Equipo">
+            <div class="container">
+                <h2>Equipo</h2>
+                <div class="team-grid">
+                    <article class="team-card">
+                        <h3>Laura</h3>
+                        <p>Directora Creativa</p>
+                    </article>
+                    <article class="team-card">
+                        <h3>Marcos</h3>
+                        <p>Desarrollador Frontend</p>
+                    </article>
+                    <article class="team-card">
+                        <h3>Elena</h3>
+                        <p>Estratega de Marca</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials" aria-label="Testimonios">
+            <div class="container">
+                <h2>Testimonios</h2>
+                <div class="testimonials-grid">
+                    <blockquote>
+                        <p>“El equipo llevó nuestra marca a un nivel profesional y generó resultados rápidos.”</p>
+                        <cite>- Cliente A</cite>
+                    </blockquote>
+                    <blockquote>
+                        <p>“Gran creatividad y comunicación. La web quedó impecable y fácil de usar.”</p>
+                        <cite>- Cliente B</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq" aria-label="Preguntas frecuentes">
+            <div class="container">
+                <h2>FAQ</h2>
+                <details>
+                    <summary>¿Cuánto tiempo tarda un proyecto?</summary>
+                    <p>Un proyecto típico va de 4 a 8 semanas según alcance.</p>
+                </details>
+                <details>
+                    <summary>¿Ofrecen soporte después del lanzamiento?</summary>
+                    <p>Sí, ofrecemos mantenimiento mensual y actualizaciones.</p>
+                </details>
+                <details>
+                    <summary>¿Se puede escalar el sitio en el futuro?</summary>
+                    <p>Claro, construimos con escalabilidad en mente y arquitecturas limpias.</p>
+                </details>
+            </div>
+        </section>
+
+        <section id="contact" class="contact" aria-label="Contacto">
+            <div class="container">
+                <h2>Contacto</h2>
+                <p>¿Listo para comenzar? Envíanos tu briefing y te responderemos en 24 hrs.</p>
+                <a href="contact.html" class="cta-button">Enviar un mensaje</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Estudio Creativo. Todos los derechos reservados.</p>
+            <ul>
+                <li><a href="contact.html">Contacto</a></li>
+            </ul>
+        </div>
+    </footer>
     
     <script src="home.js"></script>
 </body>
